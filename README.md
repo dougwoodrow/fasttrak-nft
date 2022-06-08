@@ -2,6 +2,8 @@
 
 _**A really fast way to NFT-mint your audio files using FFMPEG, Express, and ether._**
 
+<img width="915" alt="Screen Shot 2022-06-08 at 12 18 10 AM" src="https://user-images.githubusercontent.com/12818719/172531162-0a1ead4d-19ed-4213-9e0b-323165a0e03f.png">
+
 👉 Mint NFTs for audio files (MP3 tested) via FFMPEG MD5s on a eth-based network
 
 👉 Simple Express-based API
