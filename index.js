@@ -22,10 +22,14 @@ app.post("/api/v1/mint", async (req, res) => {
     const body = req.body
     const Musicd = await hre.ethers.getContractFactory("Musicd");
     try {
-        const checksum = await cmd(`ffmpeg -i \"${body.filePath}\" -map 0:a -codec copy -hide_banner -loglevel warning -f md5 -`)
-        const block = await Musicd.deploy(checksum);
-        await block.deployed();
-        res.json({id: block.address})
+        if (body.path && body.principal) {
+            const checksum = await cmd(`ffmpeg -i \"${body.path}\" -map 0:a -codec copy -hide_banner -loglevel warning -f md5 -`)
+            const block = await Musicd.deploy(checksum.replace("\n", ""), body.principal);
+            await block.deployed();
+            res.json({id: block.address})
+        } else {
+            res.json({error: "Missing parameters"})
+        }
     } catch (e) {
         console.error(e)
     }
