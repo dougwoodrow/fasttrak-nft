@@ -1,0 +1,19 @@
+name: Fasttrak Network
+on: [push]
+env:
+  BRANCH: '${{ github.ref_name }}'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js from NVM
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - name: Install NPM Dependencies (CI)
+        run: npm ci
+      - name: Test
+        run: |-
+          npm test
