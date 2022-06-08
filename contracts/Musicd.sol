@@ -9,7 +9,7 @@ contract Musicd {
     string private checksum;
 
     constructor(string memory _checksum, string memory _principal) {
-        console.log("Minting for checksum: ", _checksum);
+        console.log("Minting for checksum:principal", _checksum, _principal);
         checksum = _checksum;
         principal = _principal;
     }
