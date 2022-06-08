@@ -1,42 +1,35 @@
-# Advanced Sample Hardhat Project
+# Fasttrak Network
 
-This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
+_**A really fast way to NFT-mint your audio files using FFMPEG, Express, and ether._**
 
-The project comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts. It also comes with a variety of other tools, preconfigured to work with the project code.
+<img width="915" alt="Screen Shot 2022-06-08 at 12 18 10 AM" src="https://user-images.githubusercontent.com/12818719/172531162-0a1ead4d-19ed-4213-9e0b-323165a0e03f.png">
 
-Try running some of the following tasks:
+👉 Mint NFTs for audio files (MP3 tested) via FFMPEG MD5s on a eth-based network
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-npx hardhat help
-REPORT_GAS=true npx hardhat test
-npx hardhat coverage
-npx hardhat run scripts/deploy.js
-node scripts/deploy.js
-npx eslint '**/*.js'
-npx eslint '**/*.js' --fix
-npx prettier '**/*.{json,sol,md}' --check
-npx prettier '**/*.{json,sol,md}' --write
-npx solhint 'contracts/**/*.sol'
-npx solhint 'contracts/**/*.sol' --fix
+👉 Simple Express-based API
+
+👉 Hardhat based dapp
+
+## Getting Started
+
+### Install pre-requisites
+
+- `brew install nvm`
+- `brew isntall ffmpeg`
+
+### Run it
+
+1. Setup node env `nvm use`
+2. Install deps `npm install`
+3. Compile the solidity contracts `npm run compile`
+4. Start the express server `npm start`
+
+cURL to mint:
+```bash
+curl --location --request POST 'http://127.0.0.1:8000/api/v1/mint' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "filePath": "/some/file.mp3"
+}'
 ```
 
-# Etherscan verification
-
-To try out Etherscan verification, you first need to deploy a contract to an Ethereum network that's supported by Etherscan, such as Ropsten.
-
-In this project, copy the .env.example file to a file named .env, and then edit it to fill in the details. Enter your Etherscan API key, your Ropsten node URL (eg from Alchemy), and the private key of the account which will send the deployment transaction. With a valid .env file in place, first deploy your contract:
-
-```shell
-hardhat run --network ropsten scripts/deploy.js
-```
-
-Then, copy the deployment address and paste it in to replace `DEPLOYED_CONTRACT_ADDRESS` in this command:
-
-```shell
-npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS "Hello, Hardhat!"
-```
